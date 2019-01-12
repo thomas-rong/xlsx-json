@@ -1,0 +1,27 @@
+{
+  "env": {
+    "browser": false,
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "no-unused-vars": [1, {"vars": "all", "args": "none"}],
+    "no-console": [ 1 ],
+    "comma-dangle": [ 0 ],
+    "eqeqeq": "error",
+    "no-useless-assign/no-useless-assign": 2,
+    "require-yield": "off"
+  },
+  "plugins": [
+    "no-useless-assign"
+  ]
+}

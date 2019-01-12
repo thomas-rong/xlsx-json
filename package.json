@@ -1,0 +1,31 @@
+{
+  "name": "xlsx-json",
+  "version": "1.0.0",
+  "description": "based on js-xlsx",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomas-rong/xlsx-json.git"
+  },
+  "keywords": [
+    "xlsx",
+    "excel",
+    "json"
+  ],
+  "author": "thomas.hairong@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thomas-rong/xlsx-json/issues"
+  },
+  "homepage": "https://github.com/thomas-rong/xlsx-json#readme",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "xlsx": "^0.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.0"
+  }
+}
