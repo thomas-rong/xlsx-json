@@ -15,6 +15,10 @@
     "excel",
     "json"
   ],
+  "types": "types",
+  "engines": {
+		"node": ">=8"
+	},
   "author": "thomas.hairong@gmail.com",
   "license": "MIT",
   "bugs": {
