@@ -51,6 +51,16 @@ example: 一下一张表有2个sheet
 
 ## 使用案列
 
+package.json增加依赖
+
+```json
+"dependencies": {
+  "xlsx-json": "git+https://github.com/thomas-rong/xlsx-json.git"
+},
+```
+
+执行`npm i`
+
 html 代码片段
 
 ```html
@@ -84,7 +94,7 @@ const templateHeader= [
 
 ```js
 <script>
-  // const xlsx2json = require('path to xlsx-json');
+  const xlsx2json = require('xlsx-json');
   const upload = async (event) => {
     let data = await xlsx2json.loadByBrowser(event.target.files[0], templateHeader);
     console.log(data[0].data);
