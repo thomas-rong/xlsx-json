@@ -48,3 +48,46 @@ example: 一下一张表有2个sheet
   }
 ]
 ```
+
+## 使用案列
+
+html 代码片段
+
+```html
+  <input type="file" onChange="upload"/>
+```
+
+excel 表格样例
+
+|名称 |年龄 |地址      |
+|:---|---:|:---------|
+|张三|18   |北京      |
+|李四|11   |浙江杭州   |
+
+js 代码片段
+
+定义验证模板
+
+```js
+const templateHeader= [
+  {
+    sheetHeader:{
+      "名称":{key:"name", type:"String"},
+      "年龄":{key:"age", type:"Number", check: row=>{return age > 17 ? true : '年龄必须不小于18岁';}},
+      "地址":{key:"address", type:"String", require:false},
+    }
+  }
+]
+```
+
+定义 加载方法
+
+```js
+<script>
+  // const xlsx2json = require('path to xlsx-json');
+  const upload = async (event) => {
+    let data = await xlsx2json.loadByBrowser(event.target.files[0], templateHeader);
+    console.log(data[0].data);
+  }
+</script>
+```
