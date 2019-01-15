@@ -7,7 +7,7 @@
 ## 模板格式
 
 支持多sheet验证
-example: 一下一张表有2个sheet
+example: 以下一张表有2个sheet
 
 ```js
 [
