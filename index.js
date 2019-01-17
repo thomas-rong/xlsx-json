@@ -207,8 +207,8 @@ const validateAndMappingKey = (name, row, header, index) => {
     row[key] = type === 'Date' ? val.getTime() : val;
   });
   if (!_.isEmpty(funcList)) {
-    funcList.map(({check, val, k}) => {
-      let checkRes = check(val, row);
+    funcList.map(({check, k}) => {
+      let checkRes = check(row);
       if (typeOf(checkRes) !== 'Boolean') {
         throw new Error(`表[${name}]数据有效性验证失败,[列:${k}, 行:${index + 2}]值错误，${checkRes}`);
       }
