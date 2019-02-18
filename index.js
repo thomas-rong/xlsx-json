@@ -97,9 +97,18 @@ const processSheet = (workSheetArr, templates) => {
   return jsonArr;
 }
 
-const downXlsx = (data, filename = '未命名.xlsx') => {
+const downXlsxFromJson = (data, filename = '未命名.xlsx') => {
   /* convert state to workbook */
-  const ws = XLSX.utils.aoa_to_sheet(data);
+  const ws = XLSX.utils.json_to_sheet(data);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, 'SheetJS');
+  /* generate file and send to client */
+  XLSX.writeFile(wb, filename);
+};
+
+const downXlsxFromTable = (data, filename = '未命名.xlsx') => {
+  /* convert state to workbook */
+  const ws = XLSX.utils.table_to_sheet(data);
   const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, 'SheetJS');
   /* generate file and send to client */
@@ -220,5 +229,6 @@ const validateAndMappingKey = (name, row, header, index) => {
 export default {
   loadByBrowser,
   loadByPath,
-  downXlsx
+  downXlsxFromJson,
+  downXlsxFromTable
 }
