@@ -2,7 +2,7 @@
   "name": "xlsx-json",
   "version": "1.0.0",
   "description": "based on js-xlsx",
-  "main": "index.js",
+  "main": "index",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,8 +17,8 @@
   ],
   "types": "types",
   "engines": {
-		"node": ">=8"
-	},
+    "node": ">=8"
+  },
   "author": "thomas.hairong@gmail.com",
   "license": "MIT",
   "bugs": {
