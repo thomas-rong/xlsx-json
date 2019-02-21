@@ -95,12 +95,28 @@ const processSheet = (workSheetArr, templates) => {
     throw new Error(errInf);
   }
   return jsonArr;
-}
+};
 
-const downXlsxFromJson = (data, filename = '未命名.xlsx') => {
-  /* convert state to workbook */
-  const ws = XLSX.utils.json_to_sheet(data);
-  const wb = XLSX.utils.book_new();
+const transformJson = (data, header) => {
+  if(!header || !data){
+    return data || [{'提示': '数据不存在'}];
+  }
+  return data.map(r => {
+    return _.keys(header).reduce((p, c) => {
+      let h = header[c].label;
+      p[h] = _.get(r, c, header[c].default);
+      if(header[c].format){
+        p[h] = header[c].format(p[h]);
+      }
+      return p;
+    },{});
+  });
+};
+
+const downXlsxFromJson = (data, header, filename = '未命名.xlsx') => {
+  let formatData = transformJson(data, header);
+  let ws = XLSX.utils.json_to_sheet(formatData);
+  let wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, 'SheetJS');
   /* generate file and send to client */
   XLSX.writeFile(wb, filename);
@@ -108,8 +124,8 @@ const downXlsxFromJson = (data, filename = '未命名.xlsx') => {
 
 const downXlsxFromTable = (data, filename = '未命名.xlsx') => {
   /* convert state to workbook */
-  const ws = XLSX.utils.table_to_sheet(data);
-  const wb = XLSX.utils.book_new();
+  let ws = XLSX.utils.table_to_sheet(data);
+  let wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, 'SheetJS');
   /* generate file and send to client */
   XLSX.writeFile(wb, filename);
