@@ -101,12 +101,12 @@ const transformJson = (data, header) => {
   if(!header || !data){
     return data || [{'提示': '数据不存在'}];
   }
-  return data.map(r => {
-    return _.keys(header).reduce((p, c, idx) => {
+  return data.map((r, rIdx) => {
+    return _.keys(header).reduce((p, c, cIdx) => {
       let h = header[c].label;
       p[h] = _.get(r, c, header[c].default);
       if(header[c].format){
-        p[h] = header[c].format(p[h], idx);
+        p[h] = header[c].format(p[h], rIdx, cIdx);
       }
       return p;
     },{});
