@@ -106,7 +106,7 @@ const transformJson = (data, header) => {
       let h = header[c].label;
       p[h] = _.get(r, c, header[c].default);
       if(header[c].format){
-        p[h] = header[c].format(p[h], rIdx, cIdx);
+        p[h] = header[c].format(p[h], rIdx, cIdx, r);
       }
       return p;
     },{});
