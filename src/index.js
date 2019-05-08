@@ -113,20 +113,20 @@ const transformJson = (data, header) => {
   });
 };
 
-const downXlsxFromJson = (data, header, filename = '未命名.xlsx') => {
+const downXlsxFromJson = (data, header, filename = '未命名.xlsx', sheetname = 'Sheet') => {
   let formatData = transformJson(data, header);
   let ws = XLSX.utils.json_to_sheet(formatData);
   let wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, 'SheetJS');
+  XLSX.utils.book_append_sheet(wb, ws, sheetname);
   /* generate file and send to client */
   XLSX.writeFile(wb, filename);
 };
 
-const downXlsxFromTable = (data, filename = '未命名.xlsx') => {
+const downXlsxFromTable = (data, filename = '未命名.xlsx', sheetname = 'Sheet') => {
   /* convert state to workbook */
   let ws = XLSX.utils.table_to_sheet(data);
   let wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, 'SheetJS');
+  XLSX.utils.book_append_sheet(wb, ws, sheetname);
   /* generate file and send to client */
   XLSX.writeFile(wb, filename);
 };
